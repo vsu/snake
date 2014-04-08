@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Snake</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-slider.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Snake</a>
+			</div>
+            <div class="navbar-collapse collapse">
+                <ul id="navbar" class="nav navbar-nav navbar-right" style="line-height: 50px; vertical-align: middle">
+                    <li><h4 style="margin: 0 20px 0 0; line-height: 50px; min-width: 150px;"><span style="margin-right: 10px">Score</span><span id="labelScore" class="label label-primary">0</span></h4></li>
+                    <li><button id="btnStart" class="btn btn-default btn-sm" title="Start"><span class="glyphicon-nav glyphicon glyphicon-play"></span> Start</button></li>
+                    <li><button id="btnPause" class="btn btn-default btn-sm" title="Pause" style="display: none"><span class="glyphicon-nav glyphicon glyphicon-pause"></span> Pause</button></li>
+                    <li><button id="btnNew" class="btn btn-default btn-sm" title="Restart"><span class="glyphicon-nav glyphicon glyphicon-repeat"></span> New</button></li>
+                    <li><span id="btnOptions" style="margin-left: 20px" class="glyphicon-nav glyphicon glyphicon-chevron-down" title="Options" style="cursor: pointer"></span></li>
+                </ul>
+            </div>
+            <div id="sectionOptions" class="row" style="display: none">
+                <hr />
+                <div class="col-xs-12 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <ul style="padding-left: 15px">
+                                <li>
+                                    <p class="help-block">Use the arrows keys to move the snake and to start the game.</p>
+                                </li>
+                                <li>
+                                    <p class="help-block">Use the spacebar to pause and unpause the game.</p>
+                                </li>
+                                <li>
+                                    <p class="help-block">Click the board to start a new game.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Options</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-4">
+                                    <h5>Difficulty</h5>
+                                </div>
+                                <div class="col-xs-12 col-md-8">
+                                    <input id="sliderDiff" data-slider-id="sliderDiff" type="text"
+                                           data-slider-min="1" data-slider-max="3" data-slider-step="1" data-slider-value="1" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-4">
+                                    <h5>Board Size</h5>
+                                </div>
+                                <div class="col-xs-12 col-md-8">
+                                    <input id="sliderSize" data-slider-id="sliderSize" type="text"
+                                           data-slider-min="1" data-slider-max="3" data-slider-step="1" data-slider-value="1" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">High Scores
+                                <button class="btn btn-default btn-xs pull-right" id="btnClearScores" style="margin-top: -2px">Clear</button>
+                            </h3>
+                        </div>
+                        <div id="sectionScores" class="panel-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+	<div class="container" style="padding: 0">
+        <canvas id="canvas" style="width: 400px; height: 300px; margin: 0"></canvas>
+    </div>
+	<div id="modal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+					<p></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary btn-positive"></button>
+					<button type="button" class="btn btn-default btn-negative" data-dismiss="modal"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/require.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
