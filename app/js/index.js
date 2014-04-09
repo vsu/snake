@@ -72,11 +72,11 @@ require(
                 size: sliderSize.getValue()
             };
 
-            util.putStorage("snake.options", options);
+            util.storage.put("snake.options", options);
         }
 
         function _loadOptions() {
-            var options = util.getStorage("snake.options");
+            var options = util.storage.get("snake.options");
             if (options != null) {
                 sliderDiff.setValue(options.difficulty);
                 sliderSize.setValue(options.size);
@@ -84,7 +84,7 @@ require(
         }
 
         function _saveHighScores(score) {
-            var scores = util.getStorage("snake.scores");
+            var scores = util.storage.get("snake.scores");
             if (scores == null) {
                 scores = [];
             }
@@ -94,11 +94,11 @@ require(
             var topScores = _.chain(scores)
                 .sortBy(function (item) { return -item.score; }).first(5).value();
 
-            util.putStorage("snake.scores", topScores);
+            util.storage.put("snake.scores", topScores);
         }
 
         function _loadHighScores() {
-            var scores = util.getStorage("snake.scores");
+            var scores = util.storage.get("snake.scores");
             if (scores != null) {
                 var displayScores = _(scores).map(function (item) {
                     item["dateText"] = moment(item.date).format("llll");

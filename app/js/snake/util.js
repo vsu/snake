@@ -1,8 +1,9 @@
 define(
     [
+        "constants",
         "underscore"
     ],
-    function () {
+    function (constants) {
         var _isStorageSupported = function() {
             try {
                 return "localStorage" in window && window["localStorage"] !== null;
@@ -11,42 +12,66 @@ define(
             }
         };
 
-
         return {
-            /*
-             * Checks if local storage is supported by the browser.
-             * @return {Boolean}  true if supported or false otherwise
-             */
-            isStorageSupported: _isStorageSupported,
+            storage: {
+                /*
+                 * Checks if local storage is supported by the browser.
+                 * @return {Boolean}  true if supported or false otherwise
+                 */
+                isSupported: _isStorageSupported,
 
-            /*
-             * Puts an object in local storage.
-             * @param {String}  key  the key to associate the object with
-             * @param {Object}  val  the object to store
-             * @return {Boolean}  true if successful or false otherwise
-             */
-            putStorage: function(key, val) {
-                if (_isStorageSupported()) {
-                    localStorage[key] = JSON.stringify(val);
-                    return true;
+                /*
+                 * Puts an object in local storage.
+                 * @param {String}  key  the key to associate the object with
+                 * @param {Object}  val  the object to store
+                 * @return {Boolean}  true if successful or false otherwise
+                 */
+                put: function(key, val) {
+                    if (_isStorageSupported()) {
+                        localStorage[key] = JSON.stringify(val);
+                        return true;
+                    }
+
+                    return false;
+                },
+
+                /*
+                 * Retrieves an object from local storage.
+                 * @param {String}  key  the key to associate the object with
+                 * @return {Object}  the object or null if error or not found
+                 */
+                get: function(key) {
+                    if (_isStorageSupported()) {
+                        if (_(localStorage).has(key)) {
+                            return JSON.parse(localStorage[key]);
+                        }
+                    }
+
+                    return null;
                 }
-
-                return false;
             },
 
-            /*
-             * Retrieves an object from local storage.
-             * @param {String}  key  the key to associate the object with
-             * @return {Object}  the object or null if error or not found
-             */
-            getStorage: function(key) {
-                if (_isStorageSupported()) {
-                    if (_(localStorage).has(key)) {
-                        return JSON.parse(localStorage[key]);
-                    }
-                }
+            math: {
+                /**
+                 * Generates a random number based on difficulty level.
+                 * As difficulty increases, the range approaches [0,1), so that food can occur
+                 * near the board walls.
+                 * @return {Object}  a new snake object
+                 */
+                getRandom: function(difficulty) {
+                    switch (difficulty) {
+                        case 1:
+                            return (Math.random() + 1) / 3;
 
-                return null;
+                        case 2:
+                            return (2 * Math.random() + 1) / 4;
+
+                        case 3:
+                            return Math.random();
+                    }
+
+                    return 0;
+                }
             }
 
         };
