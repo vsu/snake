@@ -13,6 +13,37 @@ define(
         };
 
         return {
+            fullScreen: {
+                /*
+                 * Launch full screen on the specified element.
+                 * @param {Object}  element  the element to show full screen
+                 */
+                launch: function(element) {
+                    if (element.requestFullscreen) {
+                        element.requestFullscreen();
+                    } else if(element.mozRequestFullScreen) {
+                        element.mozRequestFullScreen();
+                    } else if(element.webkitRequestFullscreen) {
+                        element.webkitRequestFullscreen();
+                    } else if(element.msRequestFullscreen) {
+                        element.msRequestFullscreen();
+                    }
+                },
+
+                /*
+                 * Exit full screen mode.
+                 */
+                exit: function() {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if(document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if(document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    }
+                }
+            },
+
             storage: {
                 /*
                  * Checks if local storage is supported by the browser.

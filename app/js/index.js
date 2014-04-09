@@ -144,6 +144,10 @@ require(
                 _newGame();
             });
 
+            $("#btnFullScreen").on("click", function () {
+                util.fullScreen.launch(document.getElementById("canvas"));
+            });
+
             $("#btnOptions").on("click", function () {
                 if ($("#sectionOptions").is(":visible")) {
                     $("#sectionOptions").hide();
