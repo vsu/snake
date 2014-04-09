@@ -47,7 +47,6 @@ define(
                     return { rows: _cellMap.length, cols: _cellMap[0].length};
                 },
 
-
                 /**
                  * Adds an object to the cell map.
                  * @param {Object}  o  object to add

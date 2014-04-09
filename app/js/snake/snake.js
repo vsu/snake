@@ -73,7 +73,7 @@ define(
 
                 /*
                  * Sets the direction of the snake.
-                 * @return {Integer}  one of the direction constants
+                 * @param {Integer}  one of the direction constants
                  */
                 setDirection: function(dir) {
                     switch (dir) {

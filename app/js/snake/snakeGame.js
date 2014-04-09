@@ -6,7 +6,6 @@ define(
         "food",
         "snake",
         "util",
-        "jquery",
         "underscore"
     ],
     function (Canvas, CellMap, constants, Food, Snake, util) {

@@ -43,3 +43,4 @@ You can also have Karma execute the tests once and exit by running:
 npm run test-single-run
 ```
 
+Note that only a few tests are currently written for the util.js module for purposes of illustration.
