@@ -74,29 +74,30 @@ define(
                 /*
                  * Sets the direction of the snake.
                  * @param {Integer}  one of the direction constants
+                 * @param {Boolean}  optional argument to skip "backtrack" check
                  */
-                setDirection: function(dir) {
+                setDirection: function(dir, force) {
                     switch (dir) {
                         case constants.dir.UP:
-                            if (_dir !== constants.dir.DOWN) {
+                            if ((_dir !== constants.dir.DOWN) || force) {
                                 _dir = dir;
                             }
                             break;
 
                         case constants.dir.DOWN:
-                            if (_dir !== constants.dir.UP) {
+                            if ((_dir !== constants.dir.UP) || force) {
                                 _dir = dir;
                             }
                             break;
 
                         case constants.dir.LEFT:
-                            if (_dir !== constants.dir.RIGHT) {
+                            if ((_dir !== constants.dir.RIGHT) || force) {
                                 _dir = dir;
                             }
                             break;
 
                         case constants.dir.RIGHT:
-                            if (_dir !== constants.dir.LEFT) {
+                            if ((_dir !== constants.dir.LEFT) || force) {
                                 _dir = dir;
                             }
                             break;

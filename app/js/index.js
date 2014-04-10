@@ -48,9 +48,11 @@ require(
         }
 
         function _startGame() {
-            $("#btnStart").hide();
-            $("#btnPause").show();
-            snakeGame.start();
+            if (!snakeGame.isStarted()) {
+                $("#btnStart").hide();
+                $("#btnPause").show();
+                snakeGame.start();
+            }
         }
 
         function _stopGame() {

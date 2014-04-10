@@ -113,8 +113,6 @@ define(
 
                 myCanvas.renderCellMap(myCellMap);
 
-                //_drawCanvas();
-
                 if (onScoreUpdate) {
                     onScoreUpdate(score);
                 }
@@ -203,12 +201,20 @@ define(
                 stop: _stop,
 
                 /*
+                 * Returns a value indicating whether the game has started.
+                 * @return  {Boolean}  true if started or false otherwise
+                 */
+                isStarted: function () {
+                    return isStarted;
+                },
+
+                /*
                  * Changes the snake direction when the UP key is pressed.
                  * Should be called in the key event handler.
                  */
                 onKeyUp: function() {
                     if (!isPaused) {
-                        mySnake.setDirection(constants.dir.UP);
+                        mySnake.setDirection(constants.dir.UP, !isStarted);
                         _iterate();
                     }
                 },
@@ -219,7 +225,7 @@ define(
                  */
                 onKeyDown: function() {
                     if (!isPaused) {
-                        mySnake.setDirection(constants.dir.DOWN);
+                        mySnake.setDirection(constants.dir.DOWN, !isStarted);
                         _iterate();
                     }
                 },
@@ -230,7 +236,7 @@ define(
                  */
                 onKeyLeft: function() {
                     if (!isPaused) {
-                        mySnake.setDirection(constants.dir.LEFT);
+                        mySnake.setDirection(constants.dir.LEFT, !isStarted);
                         _iterate();
                     }
                 },
@@ -241,7 +247,7 @@ define(
                  */
                 onKeyRight: function() {
                     if (!isPaused) {
-                        mySnake.setDirection(constants.dir.RIGHT);
+                        mySnake.setDirection(constants.dir.RIGHT, !isStarted);
                         _iterate();
                     }
                 },
