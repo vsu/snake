@@ -11,10 +11,10 @@ define(
     function (Canvas, CellMap, constants, Food, Snake, util) {
        /**
         * Object constructor.
-        * @param {String}   canvasId          the DOM ID of the canvas
+        * @param {Object}   canvas            the canvas DOM object
         * @param {Integer}  devicePixelRatio  the device pixel ratio
         */
-        var SnakeGame = function (canvasId, devicePixelRatio) {
+        var SnakeGame = function (canvas, devicePixelRatio) {
             var self = this;
 
             // this sets the internal scaling factor between the cell map and the canvas
@@ -49,7 +49,7 @@ define(
              * Initializes the game state.
              */
             var _initGame = function() {
-                myCanvas = new Canvas(maxRow, maxCol, SCALE, canvasId, devicePixelRatio);
+                myCanvas = new Canvas(maxRow, maxCol, SCALE, canvas, devicePixelRatio);
                 myCellMap = new CellMap(maxRow, maxCol);
                 mySnake = new Snake(myCellMap, difficulty);
                 myFood = new Food(myCellMap, difficulty);

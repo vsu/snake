@@ -6,10 +6,13 @@ define(
     function (constants) {
        /**
         * Object constructor.
-        * @param {String}   canvasId          the DOM ID of the canvas
+        * @param {Integer}  rows              the number of cell rows in the canvas
+        * @param {Integer}  cols              the number of cell columns in the canvas
+        * @param {Integer}  scale             the scaling factor between cells and pixels
+        * @param {String}   canvas            the canvas DOM object
         * @param {Integer}  devicePixelRatio  the device pixel ratio
         */
-        var Canvas = function (rows, cols, scale, canvasId, devicePixelRatio) {
+        var Canvas = function (rows, cols, scale, canvas, devicePixelRatio) {
             var self = this;
 
             // private variables
@@ -33,14 +36,13 @@ define(
             // creates a new canvas
             var pixelRatio = devicePixelRatio || 1;
 
-            _canvas = document.getElementById(canvasId);
-
+            _canvas = canvas;
             _canvas.width = cols * _scale * pixelRatio;
             _canvas.height = rows * _scale * pixelRatio;
             _canvas.style.width = _canvas.width + "px";
             _canvas.style.height = _canvas.height + "px";
 
-            _context = canvas.getContext("2d");
+            _context = _canvas.getContext("2d");
 
             // draw border
             _drawLine(0, 0, _canvas.width, 0);

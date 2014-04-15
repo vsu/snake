@@ -120,7 +120,7 @@ require(
         }
 
         domReady(function () {
-            snakeGame = new SnakeGame("canvas", window.devicePixelRatio);
+            snakeGame = new SnakeGame(document.getElementById("canvas"), window.devicePixelRatio);
 
             sliderDiff = $("#sliderDiff").slider({
                 formater: function(value) {
